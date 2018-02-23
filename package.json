@@ -25,8 +25,7 @@
     "test": "npm run build && ./scripts/test.js",
     "test:watch": "npm run build && parallelshell 'npm run build:watch -- --skip-initial-run' './scripts/test.js --watch'",
     "test:sauce": "npm run build && ./scripts/test.js --sauce",
-    "prepublish": "npm run build",
-    "postinstall": "npm run build"
+    "prepublish": "npm run build"
   },
   "files": [
     "dist",
