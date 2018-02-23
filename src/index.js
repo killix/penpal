@@ -300,12 +300,13 @@ const connectCallReceiver = (info, methods, destructionPromise) => {
  * @param {Object} options
  * @param {string} options.url The URL of the webpage that should be loaded into the created iframe.
  * @param {HTMLElement} [options.appendTo] The container to which the iframe should be appended.
+ * @param {HTMLElement} [options.iframe] Iframe element to use instead to create one new.
  * @param {Object} [options.methods={}] Methods that may be called by the iframe.
  * @param {Number} [options.timeout] The amount of time, in milliseconds, Penpal should wait
  * for the child to respond before rejecting the connection promise.
  * @return {Child}
  */
-Penpal.connectToChild = ({ url, appendTo, methods = {}, timeout }) => {
+Penpal.connectToChild = ({ url, appendTo, iframe, methods = {}, timeout }) => {
   let destroy;
   const connectionDestructionPromise = new DestructionPromise(
     (resolveConnectionDestructionPromise) => {
@@ -314,7 +315,7 @@ Penpal.connectToChild = ({ url, appendTo, methods = {}, timeout }) => {
   );
 
   const parent = window;
-  const iframe = document.createElement('iframe');
+  iframe = iframe || document.createElement('iframe');
 
   (appendTo || document.body).appendChild(iframe);
 
