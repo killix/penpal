@@ -25,6 +25,7 @@ declare namespace Penpal {
   interface IChildConnectionOptions extends IConnectionOptions {
     url: string;
     appendTo?: HTMLElement;
+    iframe?: HTMLElement;
   }
 
   interface IParentConnectionOptions extends IConnectionOptions {
